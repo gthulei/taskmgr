@@ -1,14 +1,15 @@
 import { NgModule , Optional ,SkipSelf} from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { ShareModule } from '../share/share.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    ShareModule
   ],
   exports: [
+    ShareModule,
     SidebarComponent, 
     FooterComponent, 
     HeaderComponent

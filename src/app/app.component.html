@@ -1,9 +1,16 @@
-<div class="view-wrap">
-  <header>
-      <app-header></app-header>
-  </header>
-  <main class="main"></main>
-  <footer>
-    <app-footer></app-footer>
-  </footer>
-</div>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push" align="start" opened>
+        Sidenav content
+    </mat-sidenav>
+    <!-- Body -->
+    <div class="view-wrap">
+        <header>
+            <app-header (sidenav)="sidenav.toggle()"></app-header>
+        </header>
+        <main class="main">
+        </main>
+        <footer>
+          <app-footer></app-footer>
+        </footer>
+      </div>      
+</mat-sidenav-container>
