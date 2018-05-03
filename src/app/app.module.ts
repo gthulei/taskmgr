@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
+import { ShareModule } from './share/share.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { LoginModule } from './login/login.module';
   imports: [
     BrowserModule,
     CoreModule,
+    ShareModule,
     AppRoutingModule,
     LoginModule,
   ],

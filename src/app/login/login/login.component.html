@@ -1,3 +1,20 @@
-<p>
-  login works!
-</p>
+<form class="login" [formGroup] = "formModel" (ngSubmit)="onSubmit(formModel, $event)">
+  <mat-card>
+      <mat-card-header>
+          <mat-card-title>用户登录</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <mat-input-container floatPlaceholder="auto" class="full" hintLabel="必填项">
+              <input matInput type="text" required placeholder="请输入用户名" maxLength="20" formControlName="username">
+              <mat-error>请输入用户名</mat-error>
+          </mat-input-container>
+          <mat-input-container floatPlaceholder="auto" class="full" hintLabel="必填项">
+              <input matInput type="password" required placeholder="请输入密码" maxLength="16" formControlName="password">
+              <mat-error>请输入密码6至16位密码</mat-error>
+          </mat-input-container>
+      </mat-card-content>
+      <mat-card-actions align="start">
+          <button type="submit" mat-raised-button color="primary" class="full" [disabled]="!formModel.valid">登陆</button>
+      </mat-card-actions>
+  </mat-card>
+</form>

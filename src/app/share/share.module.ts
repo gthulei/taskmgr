@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { 
   MatSidenavModule,
   MatToolbarModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatCardModule,
+  MatInputModule
 } from '@angular/material';
 
 @NgModule({
@@ -16,6 +19,11 @@ import {
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule, 
+    FormsModule,
+  
   ],
   exports :[
     CommonModule,
@@ -23,7 +31,11 @@ import {
     MatToolbarModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule, 
+    FormsModule,
   ],
   declarations: []
 })

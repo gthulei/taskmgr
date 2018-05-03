@@ -1,0 +1,17 @@
+.login{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  height: 100%;
+  .mat-card{
+    width: 350px;
+    height: 250px;
+  }
+  .mat-card-header{
+    display: flex;
+    justify-content: center;
+  }
+  .full{
+    width: 100%;
+  }
+}

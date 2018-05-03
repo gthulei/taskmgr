@@ -71,3 +71,70 @@ export class ChildComponent {
   }
 }
 ```
+
+# 变化检测策略ChangeDetection(CD)
+* 事件 HTTP请求会触发
+* 可以手动触发更新检查
+```
+Default策略
+默认情况下，Angular为我们的应用程序中的每个组件定义了一个默认的变化检测策略,默认策略会检查整个CD树
+@Component({
+  // ...
+  changeDetection: ChangeDetectionStrategy.Default
+}
+export class SomeComponent {
+  // ...
+}
+
+OnPush
+OnPush策略，当外部组件输入数据(即@Input)的引用发生变化或者有事件触发时，组件才进行变化检测，不然不会检测子组件
+@Component({
+  // ...
+  changeDetection: ChangeDetectionStrategy.OnPush
+}
+export class SomeComponent {
+  // ...
+}
+```
+
+# 自定义表单验证
+```
+<form class="login" [formGroup] = "formModel" (ngSubmit)="onSubmit(formModel, $event)">
+  // ...
+  <input matInput type="password" required placeholder="请输入密码" maxLength="16" formControlName="password">
+  <button type="submit" mat-raised-button color="primary" class="full" [disabled]="!formModel.valid">登陆</button>
+</form>
+
+import { Component, OnInit , ChangeDetectionStrategy} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush //父组件@Input或者事件触发才执行cd检查，否则不检查
+})
+export class LoginComponent implements OnInit {
+  // 绑定页面formGroup变为表单组
+  formModel: FormGroup;
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit() {
+    // 自定义验证
+    this.formModel = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.compose([Validators.required,Validators.minLength(6)])]
+    });
+  }
+
+  onSubmit({value, valid}, e: Event) {
+    // 所有的表单属性都挂载formModel中
+    console.log(this.formModel)
+    e.preventDefault();
+    if (!valid) {
+      return;
+    }
+  }
+}
+
+```
