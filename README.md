@@ -34,7 +34,7 @@
   selector: 'app-father',
   template: 
   `<div>
-    <app-child [v]="arr" (toggle)="toggle()"></app-child>
+    <app-child [v]="arr" (toggle)="toggle($event)"></app-child>
    </div>
   `,
 })
@@ -67,7 +67,7 @@ export class ChildComponent {
   @Input() v:Array<number>;
   btn(){
     // 发射事件执行父组件方法
-    this.toggle.emit();
+    this.toggle.emit('传数据');
   }
 }
 ```
